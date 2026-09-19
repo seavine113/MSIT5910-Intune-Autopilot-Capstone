@@ -1,6 +1,6 @@
 # Endpoint Security and Account Policies
 
-The Microsoft Intune and Windows Autopilot pilot includes endpoint security and account-management policies intended to provide a consistent security baseline for provisioned Windows devices.
+The Microsoft Intune and Windows Autopilot pilot will include planned endpoint security and account-management policies intended to provide a consistent security baseline for provisioned Windows devices.
 
 ## BitLocker
 
