@@ -3,7 +3,7 @@
 # Pester Unit Tests for DeviceValidation-v2.ps1
 
 # Load the validation functions without running the interactive section
-. "$PSScriptRoot\..\scripts\powershell\DeviceValidation-v2.ps1"
+. "C:\DATA\IntuneProject\Scripts\DeviceValidation-v2.ps1"
 
 
 Describe "Test-DevicePrefix" {
