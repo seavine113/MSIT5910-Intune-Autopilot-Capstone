@@ -3,7 +3,7 @@
 
 ## Project Overview
 
-This capstone project focuses on designing, implementing, and evaluating a standardized Windows laptop provisioning solution using Microsoft Intune and Windows Autopilot.
+This capstone project focuses on designing, implementing, and evaluating a standardized Windows device provisioning solution using Microsoft Intune and Windows Autopilot.
 
 The project addresses the limitations of traditional manual workstation deployment by introducing centralized endpoint management, automated application deployment, security configuration, and post-deployment validation.
 
@@ -11,7 +11,7 @@ The solution integrates Microsoft cloud services with an existing on-premises Ac
 
 ## Project Objectives
 
-- Implement a standardized Windows laptop provisioning process.
+- Implement a standardized Windows device provisioning process.
 - Integrate Windows Autopilot, Microsoft Intune, Microsoft Entra ID, and on-premises Active Directory.
 - Automate required application deployment and security policy assignments.
 - Develop PowerShell scripts for post-deployment validation.
@@ -35,77 +35,103 @@ The solution integrates Microsoft cloud services with an existing on-premises Ac
 
 The solution integrates Windows Autopilot and Microsoft Intune with a hybrid identity environment.
 
-The deployment process includes device registration, deployment profile assignment, organizational authentication, Offline Domain Join, Intune enrollment, application installation, and post-deployment validation.
+The deployment workflow includes:
 
-The system architecture diagram is included in the `design/architecture` directory.
+1. Windows device registration.
+2. Assignment of deployment profiles and configuration policies.
+3. Organizational authentication during Windows OOBE.
+4. Offline Domain Join and Hybrid Microsoft Entra Join.
+5. Microsoft Intune enrollment.
+6. Application deployment and security configuration.
+7. Post-deployment validation and monitoring.
+
+The system architecture diagram is available in the `design/architecture` directory.
 
 ## Implementation and Validation
 
-The implementation includes:
+The implementation establishes a standardized provisioning process that integrates cloud-based endpoint management with existing organizational infrastructure.
 
-1. Registering Windows laptops with Windows Autopilot.
-2. Assigning deployment profiles and required policies.
-3. Configuring Hybrid Microsoft Entra Join.
-4. Deploying required applications through Microsoft Intune.
-5. Applying security policies, including BitLocker and Windows LAPS.
-6. Validating selected Active Directory requirements through PowerShell.
-
-The custom PowerShell validation script performs three checks:
+A custom PowerShell validation script was developed to evaluate three Active Directory requirements:
 
 - **Test-ADComputerExists:** Verifies that the computer object exists in Active Directory.
-- **Test-ADComputerOU:** Verifies that the object is located in the expected organizational unit.
-- **Test-DevicePrefix:** Verifies compliance with the required device-naming prefix.
+- **Test-ADComputerOU:** Verifies that the computer object is located in the expected organizational unit.
+- **Test-DevicePrefix:** Verifies that the computer name complies with the required naming prefix.
 
-Pester unit tests evaluate the functions using positive and negative test scenarios.
+Pester unit tests were developed to verify the validation functions using positive and negative test scenarios.
 
-## Project Results
+Microsoft Intune was also used to review application installation status, configuration assignments, and device management information.
 
-The capstone evaluation documented the following outcomes:
+## Project Results and Evaluation
 
-| Evaluation Area | Result |
+The expanded evaluation included 10 successfully provisioned Windows devices.
+
+| Evaluation Area | Results |
 |---|---|
-| Laptop provisioning | 10 of 10 evaluated laptops successfully provisioned |
-| Active Directory validation | 9 of 9 selected checks passed |
-| Provisioning time – Manual | Approximately 180 minutes |
-| Provisioning time – Autopilot | Approximately 80 minutes |
-| Total provisioning time reduction | Approximately 55.6% |
+| Successfully provisioned devices | 10 |
+| Manual provisioning time | Average of approximately 160 minutes across 5 deployments |
+| Windows Autopilot provisioning time | Average of approximately 80 minutes across 10 devices |
+| Provisioning time improvement | Approximately 50% reduction |
+| Active Directory validation | Evaluated devices passed the selected post-deployment checks |
+| Application deployment | Installation status evaluated through Microsoft Intune |
+| Security configuration | BitLocker, Windows LAPS, and other management policies configured |
 
-Provisioning times represent the total elapsed installation, configuration, and waiting time.
+The provisioning-time comparison represents total elapsed deployment duration, including installation, configuration, and waiting time.
 
-Application installation and security configuration were also evaluated through Microsoft Intune. Additional validation across larger device samples is recommended.
+These findings demonstrate the feasibility and repeatability of the implemented solution within the evaluated environment.
+
+The results should not be interpreted as a comprehensive measure of all possible deployment attempts or complete enforcement verification of every application and security policy.
 
 ## Challenges and Lessons Learned
 
-A significant implementation challenge involved network connectivity during the Windows Out-of-Box Experience.
+One significant implementation challenge involved network connectivity during Windows Autopilot provisioning.
 
-Troubleshooting identified firewall filtering that interfered with the provisioning process. After resolving the connectivity issue, the tested devices successfully completed the required deployment stages.
+Troubleshooting identified firewall filtering that interfered with communication required during the Windows Out-of-Box Experience. After the connectivity issue was resolved, deployment testing successfully continued.
 
-This experience highlighted the importance of network readiness, hybrid identity integration, systematic troubleshooting, and post-deployment validation.
+The project demonstrated several important lessons:
+
+- Network connectivity must be validated before device provisioning.
+- Hybrid identity integration requires coordination between cloud and on-premises infrastructure.
+- Standardized configuration improves deployment consistency.
+- Automated validation supports repeatable testing.
+- Documentation and version control improve maintainability.
 
 ## Repository Structure
 
-- `design/architecture` – System architecture and design documentation
-- `documentation` – Requirements, implementation, and evaluation documentation
+- `design/architecture` – System architecture and supporting design materials
+- `documentation` – Requirements, implementation, evaluation, and technical documentation
 - `evidence/screenshots` – Selected implementation and testing evidence
 - `scripts/powershell` – PowerShell validation scripts
-- `tests` – Automated testing materials and results
+- `tests` – Automated unit tests and supporting results
 
 ## Version Control
 
-The project uses GitHub to maintain documentation and PowerShell scripts.
+GitHub supports version control for project documentation and infrastructure validation scripts.
 
-- `main` – Stable and reviewed project materials
-- `development` – Development, revisions, and testing before merging into the main branch
+The project uses development branches, commits, and pull requests to support controlled revisions and maintain stable project artifacts.
 
 ## Security and Confidentiality
 
-The public portfolio is intended for educational and professional demonstration.
+This public portfolio is intended for educational and professional demonstration.
 
-Sensitive organizational information, including internal infrastructure identifiers, account information, credentials, and confidential configuration details, must be removed or anonymized before publication.
+Sensitive organizational information, including credentials, internal server identifiers, tenant information, network addresses, and confidential configurations, must be removed or anonymized before publication.
+
+## Limitations
+
+Although the expanded evaluation demonstrated successful provisioning across 10 devices, testing was conducted within one organizational environment and a limited selection of hardware models.
+
+Application installation and security-policy enforcement were not independently validated for every device through the PowerShell script.
+
+Long-term reliability, department-wide scalability, and formal end-user acceptance remain outside the completed evaluation.
 
 ## Future Enhancements
 
-Future improvements may include expanded deployment testing, additional automated validation, comprehensive security policy verification, and long-term operational monitoring.
+Future improvements may include:
+
+- Expanding testing to additional hardware models.
+- Extending automated verification to Intune enrollment and application installation.
+- Increasing security-policy validation coverage.
+- Implementing additional reporting and monitoring.
+- Evaluating long-term deployment reliability and maintainability.
 
 ## Academic Context
 
