@@ -64,7 +64,7 @@ The capstone evaluation documented the following outcomes:
 
 | Evaluation Area | Result |
 |---|---|
-| Laptop provisioning | 3 of 3 evaluated laptops successfully provisioned |
+| Laptop provisioning | 10 of 10 evaluated laptops successfully provisioned |
 | Active Directory validation | 9 of 9 selected checks passed |
 | Provisioning time – Manual | Approximately 180 minutes |
 | Provisioning time – Autopilot | Approximately 80 minutes |
