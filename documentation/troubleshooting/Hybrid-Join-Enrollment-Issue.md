@@ -20,7 +20,7 @@ creation but did not complete Hybrid Join / MDM enrollment.
 - Used PowerShell validation during troubleshooting
 - Worked with Microsoft support
 
-## Current Status
+## Status at the End of Unit 5
 At the conclusion of Unit 5, Hybrid Join / MDM enrollment had not yet
 completed successfully. Troubleshooting was continuing with Microsoft support.
 
